@@ -25,6 +25,7 @@ const picTwoSrc = picTwo.src;
 const picThreeSrc = picThree.src;
 const picFourSrc = picFour.src;
 
+// Adding attributes to images
 picOne.setAttribute("data-src", picOneSrc);
 picTwo.setAttribute("data-src", picTwoSrc);
 picThree.setAttribute("data-src", picThreeSrc);
@@ -110,3 +111,8 @@ allImages.forEach((cur) =>
     cur.src = cur.dataset.src;
   })
 );
+
+nav.addEventListener("click", function (e) {
+  e.preventDefault();
+  e.stopPropagation();
+});
