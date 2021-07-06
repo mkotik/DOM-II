@@ -17,6 +17,7 @@ const islandSignUp = document
   .querySelectorAll(".destination")[2]
   .querySelector(".btn");
 
+// functions
 const randNumber = function (min, max) {
   return Math.floor(Math.random() * max - min) + min + 1;
 };
@@ -27,6 +28,7 @@ const randColor = function () {
   )})`;
 };
 
+// event listeners
 headerTitle.addEventListener("mouseover", function (e) {
   headerTitle.style.color = randColor();
   headerTitle.style.textAlign = "center";
@@ -36,6 +38,22 @@ headerTitle.addEventListener("mouseout", function (e) {
   headerTitle.style.color = "black";
 });
 
+let leftMarg = 0;
 document.addEventListener("keydown", function (e) {
-  console.log(e);
+  nav.style.display = "inline";
+  if (e.key === "ArrowRight") {
+    leftMarg = leftMarg + 100;
+    nav.style.marginLeft = `${leftMarg}px`;
+  } else if (e.key === "ArrowLeft") {
+    leftMarg = leftMarg - 100;
+    nav.style.marginLeft = `${leftMarg}px`;
+  }
+});
+let scale = 1;
+picOne.addEventListener("wheel", function (e) {
+  const scaleAdjustment = 0.05 * e.deltaY;
+  if (scale + scaleAdjustment <= 1 && scale + scaleAdjustment > 0) {
+    scale = scale + scaleAdjustment;
+  }
+  picOne.style.transform = `scale(${scale})`;
 });
