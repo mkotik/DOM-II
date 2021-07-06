@@ -7,6 +7,7 @@ const introTitle = document.querySelector(".intro h2");
 const introText = document.querySelector(".intro p");
 const picTwo = document.querySelector(".content-section img");
 const picThree = document.querySelector(".inverse-content img");
+const picFour = document.querySelector(".content-destination img");
 const funSignUp = document
   .querySelectorAll(".destination")[0]
   .querySelector(".btn");
@@ -18,6 +19,16 @@ const islandSignUp = document
   .querySelector(".btn");
 
 const body = document.querySelector("body");
+const allImages = document.querySelectorAll("img");
+const picOneSrc = picOne.src;
+const picTwoSrc = picTwo.src;
+const picThreeSrc = picThree.src;
+const picFourSrc = picFour.src;
+
+picOne.setAttribute("data-src", picOneSrc);
+picTwo.setAttribute("data-src", picTwoSrc);
+picThree.setAttribute("data-src", picThreeSrc);
+picFour.setAttribute("data-src", picFourSrc);
 
 // functions
 const randNumber = function (min, max) {
@@ -78,3 +89,24 @@ document.addEventListener("keyup", function (e) {
     picTwo.style.opacity = opacityPicTwo;
   }
 });
+
+window.addEventListener("resize", function () {
+  body.style.backgroundColor = randColor();
+});
+
+document.addEventListener("scroll", function () {
+  document.querySelector("*").style.textAlign = "center";
+});
+
+allImages.forEach((cur) =>
+  cur.addEventListener("dblclick", function () {
+    cur.src =
+      "https://resizing.flixster.com/gFjkV0hWWFFhN2qrf_P_j-1-KSQ=/506x652/v2/https://flxt.tmsimg.com/v9/AllPhotos/258/258_v9_bb.jpg";
+  })
+);
+
+allImages.forEach((cur) =>
+  cur.addEventListener("drag", function (e) {
+    cur.src = cur.dataset.src;
+  })
+);
