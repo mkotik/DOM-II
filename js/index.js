@@ -17,6 +17,8 @@ const islandSignUp = document
   .querySelectorAll(".destination")[2]
   .querySelector(".btn");
 
+const body = document.querySelector("body");
+
 // functions
 const randNumber = function (min, max) {
   return Math.floor(Math.random() * max - min) + min + 1;
@@ -56,4 +58,23 @@ picOne.addEventListener("wheel", function (e) {
     scale = scale + scaleAdjustment;
   }
   picOne.style.transform = `scale(${scale})`;
+});
+
+window.addEventListener("load", function () {
+  const loadMessage = document.createElement("p");
+  loadMessage.textContent = "This Page is Fully Loaded.";
+  loadMessage.style.margin = "0";
+  loadMessage.style.fontSize = "12px";
+  body.prepend(loadMessage);
+});
+
+let opacityPicTwo = 1;
+document.addEventListener("keyup", function (e) {
+  if (e.key === "r") {
+    opacityPicTwo = 1;
+    picTwo.style.opacity = opacityPicTwo;
+  } else {
+    opacityPicTwo -= 0.1;
+    picTwo.style.opacity = opacityPicTwo;
+  }
 });
