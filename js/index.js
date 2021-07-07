@@ -20,6 +20,7 @@ const islandSignUp = document
 
 const body = document.querySelector("body");
 const allImages = document.querySelectorAll("img");
+const links = Array.from(nav.children);
 const picOneSrc = picOne.src;
 const picTwoSrc = picTwo.src;
 const picThreeSrc = picThree.src;
@@ -112,7 +113,13 @@ allImages.forEach((cur) =>
   })
 );
 
+// Stop event propagation ;
+links.forEach((cur) =>
+  cur.addEventListener("click", function (e) {
+    cur.style.color = randColor();
+    e.stopPropagation();
+  })
+);
 nav.addEventListener("click", function (e) {
-  e.preventDefault();
-  e.stopPropagation();
+  nav.style.backgroundColor = randColor();
 });
